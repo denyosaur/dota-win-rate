@@ -2,7 +2,7 @@ import { getHeroes } from '@/lib/getHeroes';
 
 import RoleSection from './RoleSection';
 
-const HeroSection: React.FC = async () => {
+const HeroSection: React.FC<HeroSectionProps> = async ({ setSelectedHero }) => {
   const res = await getHeroes();
 
   return (
@@ -11,6 +11,8 @@ const HeroSection: React.FC = async () => {
         <RoleSection
           key={`${role}-${index}`}
           heroes={heroes}
+          role={role as 'agi' | 'all' | 'int' | 'str'}
+          setSelectedHero={setSelectedHero}
         />
       ))}
     </div>
@@ -18,3 +20,7 @@ const HeroSection: React.FC = async () => {
 }
 
 export default HeroSection;
+
+interface HeroSectionProps {
+  setSelectedHero: (newHero: string | null) => void;
+}
