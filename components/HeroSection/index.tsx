@@ -1,9 +1,9 @@
-import { getHeroes } from '@/lib/getHeroes';
+import { getAndSortHeroes } from '@/lib/getAndSortHeroes';
 
 import RoleSection from './RoleSection';
 
 const HeroSection: React.FC<HeroSectionProps> = async ({ setSelectedHero }) => {
-  const res = await getHeroes();
+  const res = await getAndSortHeroes();
 
   return (
     <div className="flex flex-col justify-around w-full">

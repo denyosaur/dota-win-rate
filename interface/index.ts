@@ -26,3 +26,14 @@ export interface RoleSectionProps {
   role: 'agi' | 'all' | 'int' | 'str';
   setSelectedHero: (newHero: string | null) => void;
 }
+
+export interface Match {
+  'match_id': number,
+  'start_time': number,
+  'win': boolean,
+  'hero_id': number,
+}
+
+export interface Matches {
+
+}

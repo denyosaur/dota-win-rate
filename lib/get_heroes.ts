@@ -1,7 +1,7 @@
 import { Hero, HeroByAttr } from '@/interface';
 import { sortByHeroAttr } from '@/lib/sortByHeroAttr';
 
-export const heroesApiRequest = async (): Promise<Hero[]> => {
+export const getHeroes = async (): Promise<Hero[]> => {
   try {
     const apiUrl = 'https://api.opendota.com/api/heroes';
     const res = await fetch(apiUrl);
