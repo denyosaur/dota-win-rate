@@ -5,7 +5,7 @@ import prisma from "@/lib/prisma";
 export async function POST() {
   try {
     const todaysDate = new Date();
-    let dateToUse = new Date(todaysDate.getFullYear(), todaysDate.getMonth(), todaysDate.getDate() - 4);
+    let dateToUse = new Date(todaysDate.getFullYear() - 1, todaysDate.getMonth(), todaysDate.getDate());
 
     const fetchData = async (startDate: Date) => {
       const endOfDay = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), 23, 59, 59);
@@ -25,7 +25,7 @@ export async function POST() {
       `;
       const encodedSqlQuery = encodeURIComponent(sqlQuery);
       const openDotaApi = `https://api.opendota.com/api/explorer?sql=${encodedSqlQuery}`;
-      console.log(openDotaApi);
+
       try {
         const res = await fetch(openDotaApi);
         const data = await res.json();

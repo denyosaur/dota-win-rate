@@ -14,22 +14,21 @@ model heroes {
   hero_id         Int              @id @map(name: "heroId")
   hero_name       String
   hero_image      String
-  hero_win_rates  hero_win_rates[]
+  hero_win_rates  winRates[]
   matches         matches[]
 
   @@map("heroes")
 }
 
-model hero_win_rates {
-  id       Int      @id @default(autoincrement())
+model winRates {
+  id       String   @id 
   hero_id  heroes   @relation(fields: [hero], references: [hero_id], onDelete: Cascade)
   hero     Int      @map(name: "heroId")
-  date     BigInt
+  day      BigInt
   wins     Int
-  losses   Int
-  win_rate Float
+  matches  Int
 
-  @@map("heroWinRates")
+  @@map("winRates")
 }
 
 model matches {
