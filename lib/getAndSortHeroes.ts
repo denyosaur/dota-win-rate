@@ -1,5 +1,4 @@
 import { getHeroes } from '@/lib/get_heroes';
-import { Hero } from '@/interface';
 
 import { sortByHeroAttr } from './sortByHeroAttr';
 
