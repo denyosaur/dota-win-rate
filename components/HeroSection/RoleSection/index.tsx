@@ -6,7 +6,7 @@ import HeroIcon from '../../HeroIcon';
 
 import { roleIcons } from './constants';
 
-const RoleSection: React.FC<RoleSectionProps> = ({ heroes, role, setSelectedHero }) => {
+const RoleSection: React.FC<RoleSectionProps> = ({ heroes, role }) => {
   return (
     <div className="flex flex-row justify-center items-center mb-6">
       <div className="flex justify-center items-center relative w-10 h-10 mr-5">
@@ -34,7 +34,6 @@ const RoleSection: React.FC<RoleSectionProps> = ({ heroes, role, setSelectedHero
             heroImage={hero.hero_image}
             name={hero.hero_name}
             roles={hero.roles}
-            setSelectedHero={setSelectedHero}
             statAttr={hero.primary_attributes}
           />
         ))}

@@ -11,7 +11,6 @@ const WinRateGraph: React.FC<WinRateGraphProps> = ({ data, name }) => {
     datasets: []
   });
 
-
   useEffect(() => {
     setDataToUse({
       labels: data.map((data) => {

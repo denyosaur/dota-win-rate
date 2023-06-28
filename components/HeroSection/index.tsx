@@ -4,7 +4,7 @@ import { HeroByAttr, SelectedHero } from '@/interface';
 
 import RoleSection from './RoleSection';
 
-const HeroSection: React.FC<HeroSectionProps> = async ({ setSelectedHero }) => {
+const HeroSection: React.FC = async () => {
   const res = await getHeroes();
 
   return (
@@ -14,7 +14,6 @@ const HeroSection: React.FC<HeroSectionProps> = async ({ setSelectedHero }) => {
           key={`${role}-${index}`}
           heroes={heroes}
           role={role as 'agi' | 'all' | 'int' | 'str'}
-          setSelectedHero={setSelectedHero}
         />
       ))}
     </div>
@@ -22,7 +21,3 @@ const HeroSection: React.FC<HeroSectionProps> = async ({ setSelectedHero }) => {
 }
 
 export default HeroSection;
-
-interface HeroSectionProps {
-  setSelectedHero: (hero: SelectedHero) => void;
-}

@@ -1,10 +1,10 @@
 import Chart from 'chart.js';
 
 import WinRateGraph from '@/components/WinRateGraph';
-import { fetchHeroWinRate } from '@/lib/fetchHeroWinRate';
+import { getWinRates } from '@/lib/getWinRates';
 
 const GraphSection: React.FC<GraphSectionProps> = async ({ selectedHero: { heroId, name } }) => {
-  const res = await fetchHeroWinRate(heroId);
+  const res = await getWinRates(heroId);
 
   return (
     <div className="flex flex-col justify-around w-full">

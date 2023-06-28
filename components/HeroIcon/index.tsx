@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image';
 import { HeroIcon } from '@/interface';
 
@@ -6,13 +7,14 @@ const HeroIcon: React.FC<HeroIcon> = ({
   heroImage,
   name,
   roles,
-  setSelectedHero,
   statAttr,
 }) => {
   const roleDataAttr = roles.map((role) => `data-${role}`);
 
   const selectHeroHandler = (obj: { heroId: string, name: string }) => {
-    setSelectedHero(obj);
+    const { heroId, name } = obj;
+    localStorage.setItem('selectedHeroId', heroId);
+    localStorage.setItem('selectedHeroName', name);
   };
 
   return (

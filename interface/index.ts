@@ -27,7 +27,6 @@ export interface HeroIcon {
   heroImage: string;
   name: string;
   roles: string[];
-  setSelectedHero: (hero: SelectedHero) => void;
   statAttr: string;
 }
 
@@ -41,7 +40,6 @@ export interface HeroWinRate {
 export interface RoleSectionProps {
   heroes: HeroesFromApi[];
   role: 'agi' | 'all' | 'int' | 'str';
-  setSelectedHero: (hero: SelectedHero) => void;
 }
 
 export interface Match {
