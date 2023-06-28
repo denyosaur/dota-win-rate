@@ -1,6 +1,6 @@
-import { Hero, HeroByAttr } from '@/interface';
+import { HeroesFromApi, HeroByAttr } from '@/interface';
 
-export const sortByHeroAttr = (data: Hero[]) => {
+export const sortByHeroAttr = (data: HeroesFromApi[]) => {
   const heroByAttr: HeroByAttr = {
     agi: [],
     str: [],
@@ -8,9 +8,9 @@ export const sortByHeroAttr = (data: Hero[]) => {
     all: [],
   };
 
-  data.forEach((hero: Hero) => {
-    const { primary_attr } = hero;
-    heroByAttr[primary_attr as keyof HeroByAttr].push(hero);
+  data.forEach((hero: HeroesFromApi) => {
+    const { primary_attributes } = hero;
+    heroByAttr[primary_attributes as keyof HeroByAttr].push(hero);
   })
 
   return heroByAttr;

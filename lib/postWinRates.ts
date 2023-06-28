@@ -1,10 +1,9 @@
 
 export const postWinRates = async () => {
   try {
-    const res = await fetch('http://localhost:3000/api/winrate', { method: 'POST' })
-    console.log(res);
+    const res = await fetch('api/winrate', { method: 'POST' })
     return res;
   } catch (err) {
-    console.error(`Error: ${err}`);
+    throw err;
   }
 };

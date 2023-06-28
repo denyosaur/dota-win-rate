@@ -48,17 +48,17 @@ export async function POST() {
           fetchData(nextDay);
         }
       } catch (err) {
-        console.error(`Error: ${err} - openDotaApi`);
-
         const nextDay = new Date(startDate);
         nextDay.setDate(startDate.getDate() + 1);
         fetchData(nextDay);
+
+        throw err;
       }
     };
 
     fetchData(dateToUse);
     return NextResponse.json({ message: "Heroes updated", success: true });
   } catch (err) {
-    console.error(`Error: ${err}`);
+    throw err;
   }
 }

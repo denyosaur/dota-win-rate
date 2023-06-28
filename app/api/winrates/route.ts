@@ -11,9 +11,8 @@ export async function GET() {
       }
     });
 
-    console.log(res)
   } catch (err) {
-    console.error(`Error: ${err}`);
+    throw err;
   }
 }
 

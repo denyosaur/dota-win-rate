@@ -29,11 +29,13 @@ const RoleSection: React.FC<RoleSectionProps> = ({ heroes, role, setSelectedHero
       >
         {heroes?.map(hero => (
           <HeroIcon
-            key={hero.id}
-            name={hero.name}
-            statAttr={hero.primary_attr}
+            key={hero.hero_id}
+            heroId={hero.hero_id.toString()}
+            heroImage={hero.hero_image}
+            name={hero.hero_name}
             roles={hero.roles}
             setSelectedHero={setSelectedHero}
+            statAttr={hero.primary_attributes}
           />
         ))}
       </div>

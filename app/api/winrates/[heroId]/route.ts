@@ -8,7 +8,7 @@ export async function GET(request: NextRequest, { params }: { params: { heroId: 
 
     const res = await prisma.winRates.findMany({
       where: {
-        hero: +heroId
+        hero: +heroId,
       }
     });
     const stringifiedData = res.map((dayObj) => ({
@@ -18,6 +18,6 @@ export async function GET(request: NextRequest, { params }: { params: { heroId: 
 
     return NextResponse.json({ data: stringifiedData, success: true });
   } catch (err) {
-    console.error(`Error: ${err}`);
+    throw err;
   }
 }

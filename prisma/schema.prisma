@@ -11,11 +11,13 @@ datasource db {
 }
 
 model heroes {
-  hero_id         Int              @id @map(name: "heroId")
-  hero_name       String
-  hero_image      String
-  hero_win_rates  winRates[]
-  matches         matches[]
+  hero_id               Int              @id @map(name: "heroId")
+  hero_name             String
+  hero_image            String
+  primary_attributes    String
+  roles                 String[]
+  hero_win_rates        winRates[]
+  matches               matches[]
 
   @@map("heroes")
 }

@@ -1,9 +1,11 @@
-import { getAndSortHeroes } from '@/lib/getAndSortHeroes';
+import { getHeroes } from '@/lib/getHeroes';
+
+import { HeroByAttr, SelectedHero } from '@/interface';
 
 import RoleSection from './RoleSection';
 
 const HeroSection: React.FC<HeroSectionProps> = async ({ setSelectedHero }) => {
-  const res = await getAndSortHeroes();
+  const res = await getHeroes();
 
   return (
     <div className="flex flex-col justify-around w-full">
@@ -22,5 +24,5 @@ const HeroSection: React.FC<HeroSectionProps> = async ({ setSelectedHero }) => {
 export default HeroSection;
 
 interface HeroSectionProps {
-  setSelectedHero: (newHero: string | null) => void;
+  setSelectedHero: (hero: SelectedHero) => void;
 }

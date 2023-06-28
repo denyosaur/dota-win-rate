@@ -30,6 +30,6 @@ export const fetchWinRateByDay = async () => {
     return winDay
 
   } catch (err) {
-    console.error(`Error: ${err}`);
+    throw err;
   }
 }
