@@ -1,14 +1,11 @@
 import HeroSection from '@/components/HeroSection';
 import GraphSection from '@/components/GraphSection';
 
-import { SelectedHero } from '@/interface';
-
-const HomePage = () => {
-
+const HomePage: React.FC = () => {
   return (
     <div className="flex justify-center items-center grow ">
       <HeroSection />
-      {/* <GraphSection selectedHero={selectedHero} /> */}
+      <GraphSection heroId={'1'} heroName={'Anti-Mage'} />
     </div>
   )
 }

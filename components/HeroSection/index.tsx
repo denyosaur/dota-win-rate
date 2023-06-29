@@ -8,7 +8,7 @@ const HeroSection: React.FC = async () => {
   const res = await getHeroes();
 
   return (
-    <div className="flex flex-col justify-around w-full">
+    <div className="flex flex-col justify-around w-3/5">
       {Object.entries(res).map(([role, heroes], index) => (
         <RoleSection
           key={`${role}-${index}`}

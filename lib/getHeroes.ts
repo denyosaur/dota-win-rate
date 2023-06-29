@@ -9,6 +9,7 @@ export const getHeroes = async () => {
 
     return sortedHeroes;
   } catch (err) {
+    getHeroes();
     throw err;
   }
 }
