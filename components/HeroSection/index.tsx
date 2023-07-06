@@ -1,15 +1,15 @@
-import { getHeroes } from '@/lib/getHeroes';
+import { prisma } from '@/db';
 
-import { HeroByAttr, SelectedHero } from '@/interface';
-
-import RoleSection from './RoleSection';
+import { sortByHeroAttr } from "@/lib/sortByHeroAttr";
+import RoleSection from '@/components/RoleSection';
 
 const HeroSection: React.FC = async () => {
-  const res = await getHeroes();
+  const res = await prisma.heroes.findMany();
+  const sortedHeroes = sortByHeroAttr(res);
 
   return (
-    <div className="flex flex-col justify-around w-3/5">
-      {Object.entries(res).map(([role, heroes], index) => (
+    <div className="flex flex-col justify-around h-full w-full px-14">
+      {Object.entries(sortedHeroes).map(([role, heroes], index) => (
         <RoleSection
           key={`${role}-${index}`}
           heroes={heroes}

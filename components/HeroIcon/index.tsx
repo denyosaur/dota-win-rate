@@ -6,24 +6,25 @@ import { HeroIcon } from '@/interface';
 
 const HeroIcon: React.FC<HeroIcon> = ({
   heroId,
+  shortName,
   heroImage,
-  name,
-  statAttr,
+  attributePrimary,
 }) => {
 
   return (
     <div
       className="flex justify-center items-center relative h-full w-full"
       data-heroid={heroId}
-      data-stat-attr={statAttr}
+      data-stat-attr={attributePrimary}
     >
       <Link
         className="flex justify-center items-center relative h-full w-full"
-        href={`/winrate/${heroId}-${name}`}
+        href={`/winrate/${heroId}-${shortName}`}
         replace
+        prefetch={false}
       >
         <Image
-          alt={`${name}-image`}
+          alt={`${shortName}-image`}
           className="
             object-cover
             cursor-pointer
@@ -39,3 +40,33 @@ const HeroIcon: React.FC<HeroIcon> = ({
 }
 
 export default HeroIcon;
+
+// heroId,
+// shortName,
+// displayName,
+// heroImage,
+// attributePrimary,
+// roles,
+// roleStats,
+// startingDamageMin,
+// startingDamageMax,
+// attackRange,
+// attackRate,
+// startingArmor,
+// startingMagicArmor,
+// moveSpeed,
+// moveTurnRate,
+// visionDaytimeRange,
+// visionNighttimeRange,
+// strengthBase,
+// strengthGain,
+// intelligenceBase,
+// intelligenceGain,
+// agilityBase,
+// agilityGain,
+// complexity,
+// hpRegen,
+// mpRegen,
+// attackType,
+// hype,
+// bio,
