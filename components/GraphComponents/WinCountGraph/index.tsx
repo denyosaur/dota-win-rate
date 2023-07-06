@@ -48,6 +48,12 @@ const WinCountGraph: React.FC<WinRateGraphProps> = ({ data }) => {
       }),
       datasets: [
         {
+          label: 'Losses',
+          data: data.map((data) => data.matches - data.wins),
+          borderColor: "#DC4C64",
+          borderWidth: 2,
+        },
+        {
           label: 'Wins',
           data: data.map((data) => data.wins),
           borderColor: "#3B71CA",
@@ -57,12 +63,6 @@ const WinCountGraph: React.FC<WinRateGraphProps> = ({ data }) => {
             above: '#3B71CA',
           }
         },
-        {
-          label: 'Losses',
-          data: data.map((data) => data.matches - data.wins),
-          borderColor: "#DC4C64",
-          borderWidth: 2,
-        }
       ]
     });
   }, [data, setDataToUse])

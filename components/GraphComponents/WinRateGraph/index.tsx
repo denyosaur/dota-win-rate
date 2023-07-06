@@ -42,7 +42,8 @@ const WinRateGraph: React.FC<WinCountGraphProps> = ({ data }) => {
       }),
       datasets: [
         {
-          data: data.map((data) => data.wins / data.matches),
+          label: 'Win Rate',
+          data: data.map((data) => (data.wins / data.matches) * 100),
           borderColor: "#3B71CA",
           borderWidth: 2,
         },

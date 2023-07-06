@@ -1,12 +1,14 @@
-import Chart from 'chart.js';
+import { prisma } from '@/db';
 
 import WinCountGraph from '@/components/GraphComponents/WinCountGraph';
 import WinRateGraph from '@/components/GraphComponents/WinRateGraph';
 
-import { getWinRates } from '@/lib/getWinRates';
-
 const GraphSection: React.FC<GraphSectionProps> = async ({ heroId, heroName }) => {
-  const res = await getWinRates(heroId);
+  const res = await prisma.win_rates.findMany({
+    where: {
+      hero: +heroId,
+    }
+  })
 
   return (
     <div className="flex flex-col justify-between h-full w-full">
