@@ -9,8 +9,8 @@ export const sortByHeroAttr = (data: HeroesFromApi[]) => {
   };
 
   data.forEach((hero: HeroesFromApi) => {
-    const { primary_attributes } = hero;
-    heroByAttr[primary_attributes as keyof HeroByAttr].push(hero);
+    const { attributePrimary } = hero;
+    heroByAttr[attributePrimary as keyof HeroByAttr].push(hero);
   })
 
   return heroByAttr;

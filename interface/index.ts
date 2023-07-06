@@ -7,12 +7,86 @@ export interface HeroFromOpenDota {
   'roles': string[];
 }
 
+export interface HeroFromStratz {
+  'id': number;
+  'shortName': string;
+  'displayName': string;
+  'abilities': {
+    'slot': number;
+    'abilityId': number;
+  }
+  'roles': {
+    'roleId': number,
+    'level': number,
+  }[];
+  'stat': {
+    'AttributePrimary': string;
+    'startingDamageMin': number;
+    'startingDamageMax': number;
+    'attackRange': number;
+    'attackRate': number;
+    'startingArmor': number;
+    'startingMagicArmor': number;
+    'moveSpeed': number;
+    'moveTurnRate': number;
+    'visionDaytimeRange': number;
+    'visionNighttimeRange': number;
+    'strengthBase': number;
+    'strengthGain': number;
+    'intelligenceBase': number;
+    'intelligenceGain': number;
+    'agilityBase': number;
+    'agilityGain': number;
+    'complexity': number;
+    'attackType': string;
+    'hpRegen': number;
+    'mpRegen': number;
+  }
+  'language': {
+    'hype': string;
+    'bio': string;
+  }
+}
+
+export interface HeroFromOpenDota {
+  'attack_type': string;
+  'id': string | number;
+  'localized_name': string;
+  'name': string;
+  'primary_attr': string;
+  'roles': string[];
+}
+
 export interface HeroesFromApi {
-  hero_id: number;
-  hero_name: string;
-  hero_image: string;
-  primary_attributes: string;
+  heroId: number;
+  shortName: string;
+  displayName: string;
+  heroImage: string;
+  attributePrimary: string;
   roles: string[];
+  roleStats: any;
+  startingDamageMin: number;
+  startingDamageMax: number;
+  attackRange: number;
+  attackRate: number;
+  startingArmor: number;
+  startingMagicArmor: number;
+  moveSpeed: number;
+  moveTurnRate: number;
+  visionDaytimeRange: number;
+  visionNighttimeRange: number;
+  strengthBase: number;
+  strengthGain: number;
+  intelligenceBase: number;
+  intelligenceGain: number;
+  agilityBase: number;
+  agilityGain: number;
+  complexity: number;
+  hpRegen: number;
+  mpRegen: number;
+  attackType: string;
+  hype: string;
+  bio: string;
 }
 
 export type HeroByAttr = {
@@ -25,9 +99,8 @@ export type HeroByAttr = {
 export interface HeroIcon {
   heroId: string;
   heroImage: string;
-  name: string;
-  roles: string[];
-  statAttr: string;
+  shortName: string;
+  attributePrimary: string;
 }
 
 export interface HeroWinRate {

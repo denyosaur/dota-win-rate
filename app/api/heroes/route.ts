@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import prisma from "@/lib/prisma";
+import { prisma } from "@/db";
 
-import { HeroFromOpenDota } from '@/interface';
+import { HeroFromStratz } from '@/interface';
 
 export async function GET() {
   try {
@@ -16,31 +16,46 @@ export async function GET() {
 
 export async function POST() {
   try {
-    const res = await fetch('https://api.opendota.com/api/heroes', { method: 'GET' });
+    const res = await fetch('https://api.stratz.com/api/v1/hero', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_STRATZ_TOKEN}`
+      }
+    });
     const resJson = await res.json();
 
-    resJson.sort((a: HeroFromOpenDota, b: HeroFromOpenDota) => {
-      const nameA = a.localized_name.toLowerCase();
-      const nameB = b.localized_name.toLowerCase();
 
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
-    });
-
-    const dataToUse = resJson.map((hero: HeroFromOpenDota) => {
-      const adjustedName = hero.name.substring(14);
-      console.log(hero.name, '--', adjustedName)
+    const dataToUse = Object.keys(resJson).map(id => {
       return {
-        hero_id: hero.id,
-        hero_name: hero.localized_name,
-        hero_image: `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${adjustedName}.png?`,
-        primary_attributes: hero.primary_attr,
-        roles: hero.roles,
+        heroId: resJson[id].id,
+        shortName: resJson[id].shortName,
+        displayName: resJson[id].displayName,
+        heroImage: `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${resJson[id].shortName}.png?`,
+        attributePrimary: resJson[id].stat.AttributePrimary,
+        roles: [],
+        roleStats: resJson[id].roles,
+        startingDamageMin: resJson[id].stat.startingDamageMin,
+        startingDamageMax: resJson[id].stat.startingDamageMax,
+        attackRange: resJson[id].stat.attackRange,
+        attackRate: resJson[id].stat.attackRate,
+        startingArmor: resJson[id].stat.startingArmor,
+        startingMagicArmor: resJson[id].stat.startingMagicArmor,
+        moveSpeed: resJson[id].stat.moveSpeed,
+        moveTurnRate: resJson[id].stat.moveTurnRate,
+        visionDaytimeRange: resJson[id].stat.visionDaytimeRange,
+        visionNighttimeRange: resJson[id].stat.visionNighttimeRange,
+        strengthBase: resJson[id].stat.strengthBase,
+        strengthGain: resJson[id].stat.strengthGain,
+        intelligenceBase: resJson[id].stat.intelligenceBase,
+        intelligenceGain: resJson[id].stat.intelligenceGain,
+        agilityBase: resJson[id].stat.agilityBase,
+        agilityGain: resJson[id].stat.agilityGain,
+        complexity: resJson[id].stat.complexity,
+        hpRegen: resJson[id].stat.hpRegen,
+        mpRegen: resJson[id].stat.mpRegen,
+        attackType: resJson[id].stat.attackType,
+        hype: resJson[id].language.hype,
+        bio: resJson[id].language.bio,
       }
     })
 

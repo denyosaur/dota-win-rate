@@ -6,40 +6,51 @@ generator client {
 datasource db {
   provider          = "postgresql"
   url               = env("NEXT_PUBLIC_POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl         = env("NEXT_PUBLIC_POSTGRES_URL_NON_POOLING") // uses a direct connection
-  shadowDatabaseUrl = env("NEXT_PUBLIC_POSTGRES_URL_NON_POOLING") // used for migrations
+
 }
 
 model heroes {
-  hero_id               Int              @id @map(name: "heroId")
-  hero_name             String
-  hero_image            String
-  primary_attributes    String
+  heroId                Int              @id @map(name: "heroId")
+  shortName             String
+  displayName           String
+  heroImage             String
+  attributePrimary      String
   roles                 String[]
-  hero_win_rates        winRates[]
-  matches               matches[]
+  roleStats             Json[]
+  startingDamageMin     Int
+  startingDamageMax     Int
+  attackRange           Int
+  attackRate            Int
+  startingArmor         Int
+  startingMagicArmor    Int
+  moveSpeed             Int
+  moveTurnRate          Int
+  visionDaytimeRange    Int
+  visionNighttimeRange  Int
+  strengthBase          Int
+  strengthGain          Int
+  intelligenceBase      Int
+  intelligenceGain      Int
+  agilityBase           Int
+  agilityGain           Int
+  complexity            Int
+  hpRegen               Int
+  mpRegen               Int
+  attackType            String
+  hype                  String
+  bio                   String
+  hero_win_rates        win_rates[]
 
   @@map("heroes")
 }
 
-model winRates {
+model win_rates {
   id       String   @id 
-  hero_id  heroes   @relation(fields: [hero], references: [hero_id], onDelete: Cascade)
+  heroId   heroes   @relation(fields: [hero], references: [heroId], onDelete: Cascade)
   hero     Int      @map(name: "heroId")
   day      BigInt
   wins     Int
   matches  Int
 
   @@map("winRates")
-}
-
-model matches {
-  id          Int      @id @default(autoincrement())
-  match_id    BigInt
-  hero_id     heroes   @relation(fields: [hero], references: [hero_id], onDelete: Cascade)
-  hero        Int      @map(name: "heroId")
-  start_time  BigInt
-  win         Boolean
-
-  @@map("matches")
 }

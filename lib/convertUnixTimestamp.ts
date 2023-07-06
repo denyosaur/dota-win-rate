@@ -5,5 +5,5 @@ export const convertUnixTimestamp = (timestamp: string) => {
   const month = date.getMonth();
   const day = date.getDate();
 
-  return `${month}-${day}-${year}`
+  return `${month}/${day}/${year}`
 };
