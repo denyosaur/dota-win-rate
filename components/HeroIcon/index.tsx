@@ -1,4 +1,4 @@
-'use client'
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -17,11 +17,9 @@ const HeroIcon: React.FC<HeroIcon> = ({
       data-heroid={heroId}
       data-stat-attr={attributePrimary}
     >
-      <Link
+      <a
         className="flex justify-center items-center relative h-full w-full"
-        href={`/winrate/${heroId}-${shortName}`}
-        replace
-        prefetch={false}
+        href={`/winrate/${heroId}`}
       >
         <Image
           alt={`${shortName}-image`}
@@ -34,7 +32,7 @@ const HeroIcon: React.FC<HeroIcon> = ({
           height={36}
           src={heroImage}
         />
-      </Link>
+      </a>
     </div>
   )
 }

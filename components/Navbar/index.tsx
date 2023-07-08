@@ -1,9 +1,7 @@
 'use client'
-import React, { useState } from 'react';
-import Image from 'next/image';
-import HeroSection from '@/components/HeroSection';
+import React, { ReactNode, useState } from 'react';
 
-const Navbar = () => {
+const Navbar = ({ children }: NavbarProps) => {
   const [isActive, setIsActive] = useState<boolean>(true);
   const icon = 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/global/dota2_logo_symbol.png';
   const navbarBackgroundImage = 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//blog/bg_repeater.jpg';
@@ -16,36 +14,52 @@ const Navbar = () => {
 
   const toggleNavbar = () => {
     setIsActive(!isActive)
-    console.log(isActive)
   };
+
+  const navbarClassNames = isActive ?
+    `absolute top-0 left-0
+    flex flex-col 
+    h-screen w-[45rem]
+    p-3 
+    bg-zinc-900
+    z-[2]
+    transition-all ease-in-out delay-350
+    shadow-2xl
+    ` :
+    `absolute top-0 left-0
+    flex flex-col 
+    h-screen w-32
+    p-3 
+    bg-zinc-900
+    z-[2]
+    transition-all ease-in-out delay-350
+    shadow-2xl
+    `;
 
   return (
     <nav
-      className="
-        absolute top-0 left-0
-        flex flex-col 
-        h-screen w-3/5 
-        p-3 
-        bg-zinc-900
-        z-[2]
-      "
-
+      className={navbarClassNames}
+      style={{ backgroundImage: `url(${navbarBackgroundImage})`, backgroundSize: 'initial', }}
     >
-      <div
-        className="flex flex-col h-full w-full"
-        style={{ backgroundImage: `url(${navbarBackgroundImage})`, backgroundSize: 'cover', }}>
-        <div className="flex flex-row items-center h-[80px] px-[30px] w-full">
-          <div className="relative w-[50px] h-[50px]">
-            <a
-              className="flex w-[50px] h-[50px] min-w-[50px] min-h-[50px] opacity-80"
-              href={'/'}
-              style={backgroundIcon}
-            ></a>
-          </div>
-        </div>
-        <HeroSection />
+      <div className="relative w-[50px] h-[50px] mt-3 ml-7">
+        <a
+          className="flex w-[50px] h-[50px] min-w-[50px] min-h-[50px] opacity-80"
+          href={'/'}
+          style={backgroundIcon}
+        ></a>
       </div>
-
+      <div
+        className={`
+        flex
+        h-full w-full
+        ${isActive ? "opacity-100" : "opacity-0"}
+        ${isActive ? "translate-x-0" : "translate-x-[-30rem]"}
+        overflow-hidden
+        transition-all ease-in-out delay-350
+        `}
+      >
+        {children}
+      </div>
       <div
         className="
           absolute top-2/4 right-[-2.6rem]
@@ -55,7 +69,7 @@ const Navbar = () => {
           rounded-full
           pointer
         "
-        onClick={() => setIsActive(!isActive)}
+        onClick={() => toggleNavbar()}
       >
         <button>button</button>
       </div>
@@ -64,3 +78,7 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
+interface NavbarProps {
+  children: ReactNode;
+}
