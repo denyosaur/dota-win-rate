@@ -1,6 +1,5 @@
 
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { HeroIcon } from '@/interface';
 
@@ -38,33 +37,3 @@ const HeroIcon: React.FC<HeroIcon> = ({
 }
 
 export default HeroIcon;
-
-// heroId,
-// shortName,
-// displayName,
-// heroImage,
-// attributePrimary,
-// roles,
-// roleStats,
-// startingDamageMin,
-// startingDamageMax,
-// attackRange,
-// attackRate,
-// startingArmor,
-// startingMagicArmor,
-// moveSpeed,
-// moveTurnRate,
-// visionDaytimeRange,
-// visionNighttimeRange,
-// strengthBase,
-// strengthGain,
-// intelligenceBase,
-// intelligenceGain,
-// agilityBase,
-// agilityGain,
-// complexity,
-// hpRegen,
-// mpRegen,
-// attackType,
-// hype,
-// bio,

@@ -1,5 +1,6 @@
 import GraphPage from '@/components/GraphPage';
 import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
 
 const Winrate: React.FC<WinRate> = async ({ params: { id } }) => {
   const backgroundImage = 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/backgrounds/greyfade.jpg';
@@ -11,8 +12,10 @@ const Winrate: React.FC<WinRate> = async ({ params: { id } }) => {
       className="flex h-screen flex-row items-center justify-start"
       style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', }}
     >
-      <Navbar />
-      <main className="flex grow h-auto w-[90vw] pb-10">
+      <Navbar>
+        <HeroSection />
+      </Navbar>
+      <main className="flex grow h-screen w-[90vw] max-w-[90rem] pl-56 pr-20">
         <GraphPage heroId={heroId} heroName={heroName} />
       </main>
     </div>

@@ -6,7 +6,7 @@ export async function GET(request: NextRequest, { params }: { params: { heroId: 
   try {
     const { heroId } = params;
 
-    const res = await prisma.winRates.findMany({
+    const res = await prisma.win_rates.findMany({
       where: {
         hero: +heroId,
       }

@@ -4,7 +4,7 @@ import { RoleSectionProps } from '@/interface';
 
 import HeroIcon from '../HeroIcon';
 
-import { roleIcons } from './constants';
+import { roleIcons } from '@/lib/constants';
 
 const RoleSection: React.FC<RoleSectionProps> = ({ heroes, role }) => {
   return (

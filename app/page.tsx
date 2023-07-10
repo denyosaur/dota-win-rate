@@ -1,4 +1,6 @@
 import HomePage from '@/components/HomePage';
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
 
 export default function Home() {
   const backgroundImage = 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/backgrounds/greyfade.jpg';
@@ -8,6 +10,9 @@ export default function Home() {
       className="flex h-screen flex-col items-center justify-start"
       style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', }}
     >
+      <Navbar>
+        <HeroSection />
+      </Navbar>
       <main className="flex grow h-auto w-[90vw]">
         <HomePage />
       </main>

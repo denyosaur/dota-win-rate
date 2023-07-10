@@ -3,7 +3,7 @@ import { prisma } from '@/db';
 import WinCountGraph from '@/components/GraphComponents/WinCountGraph';
 import WinRateGraph from '@/components/GraphComponents/WinRateGraph';
 
-const GraphSection: React.FC<GraphSectionProps> = async ({ heroId, heroName }) => {
+const GraphSection: React.FC<GraphSectionProps> = async ({ heroId }) => {
   const res = await prisma.win_rates.findMany({
     where: {
       hero: +heroId,
@@ -12,7 +12,6 @@ const GraphSection: React.FC<GraphSectionProps> = async ({ heroId, heroName }) =
 
   return (
     <div className="flex flex-col justify-between h-full w-full">
-      <h2 className="text-gray-400 text-center pt-10 text-3xl">{heroName}</h2>
       <div className="flex flex-col justify-around items-center h-full">
         <div className="bg-zinc-800 w-[38rem]">
           <h3 className="text-center py-1 text-gray-400">Win Count</h3>
@@ -31,5 +30,4 @@ export default GraphSection;
 
 interface GraphSectionProps {
   heroId: string;
-  heroName: string;
 }

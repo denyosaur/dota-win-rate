@@ -1,10 +1,10 @@
-import GraphSection from '@/components/GraphSection';
-import HeroSection from '@/components/HeroSection';
 
-const GraphPage: React.FC<GraphPageProps> = ({ heroId, heroName }) => {
+import HeroInfoSection from '@/components/HeroInfoSection';
+
+const GraphPage: React.FC<GraphPageProps> = ({ heroId }) => {
   return (
-    <div className="flex justify-center items-center grow ">
-      <GraphSection heroId={heroId} heroName={heroName} />
+    <div className="flex grow justify-start items-start pt-28">
+      <HeroInfoSection heroId={heroId} />
     </div>
   )
 }

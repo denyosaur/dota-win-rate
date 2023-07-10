@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
 import { fetchWinRateByDay } from '@/lib/fetchWinRateByDay';
 
-import prisma from '@/lib/prisma';
+import { prisma } from '@/db';
 
 export async function GET() {
   try {
-    const res = await prisma.winRates.findMany({
+    const res = await prisma.win_rates.findMany({
       where: {
         hero: 1
       }
@@ -47,7 +47,7 @@ export async function POST() {
     })
 
 
-    await prisma.winRates.createMany({
+    await prisma.win_rates.createMany({
       data
     });
 
