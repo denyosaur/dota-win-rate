@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 
 const Winrate: React.FC<WinRate> = async ({ params: { id } }) => {
-  const backgroundImage = 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/backgrounds/greyfade.jpg';
+  const backgroundImage = 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//blog/bg_repeater.jpg';
   const [heroId, ...restOfName] = id.split('-');
   const heroName = restOfName.join('-').replace('%20', ' ');
 

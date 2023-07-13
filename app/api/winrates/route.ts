@@ -1,38 +1,21 @@
 import { NextResponse } from 'next/server';
-import { fetchWinRateByDay } from '@/lib/fetchWinRateByDay';
 
 import { prisma } from '@/db';
 
-export async function GET() {
-  try {
-    const res = await prisma.win_rates.findMany({
-      where: {
-        hero: 1
-      }
-    });
-
-  } catch (err) {
-    throw err;
-  }
-}
+import { fetchWinRateByDay } from '@/lib/fetchWinRateByDay';
+import { filterDuplicateWinrateIds } from '@/lib/filterDuplicateWinrateIds';
 
 export async function POST() {
   try {
     const fetchedWinRates = await fetchWinRateByDay();
+    const resId = await prisma.win_rates.findMany({
+      select: {
+        id: true,
+      },
+    });
+    const currentIds = resId.map(idObj => idObj.id);
 
-    const filterDuplicates = (arr: HeroArrayItem[], key1: string, key2: string) => {
-      const uniqueValues = new Set();
-      return arr.filter(item => {
-        const combinedKey = `${item[key1]}-${item[key2]}`;
-        if (uniqueValues.has(combinedKey)) {
-          return false;
-        }
-        uniqueValues.add(combinedKey);
-        return true;
-      });
-    };
-
-    const filteredForDuplicates = filterDuplicates(fetchedWinRates, 'day', 'heroId');
+    const filteredForDuplicates = filterDuplicateWinrateIds(fetchedWinRates, currentIds);
 
     const data = filteredForDuplicates.map(hero => {
       const idToUse = `${hero.day}-${hero.heroId}`;
@@ -46,7 +29,6 @@ export async function POST() {
       }
     })
 
-
     await prisma.win_rates.createMany({
       data
     });
@@ -55,12 +37,4 @@ export async function POST() {
   } catch (err) {
     console.log(err)
   }
-}
-
-interface HeroArrayItem {
-  "day": bigint;
-  "winCount": number;
-  "matchCount": number;
-  "heroId": number;
-  [key: string]: any;
 }
