@@ -31,8 +31,19 @@ const WinRateGraph: React.FC<WinCountGraphProps> = ({ data }) => {
   });
 
   const options = {
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
     maintainAspectRatio: false,
+    scales: {
+      x: {
+        ticks: {
+          color: '#eee',
+        },
+      },
+      y: {
+        ticks: {
+          color: '#eee',
+        },
+      },
+    }
   };
 
   useEffect(() => {

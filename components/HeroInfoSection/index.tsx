@@ -2,6 +2,7 @@ import { prisma } from '@/db';
 
 import GraphSection from '@/components/GraphSection';
 import HeroBio from '@/components/HeroInfoSection/HeroBio';
+import HeroDetails from '@/components/HeroInfoSection/HeroDetails';
 
 const HeroInfoSection: React.FC<HeroInfoSection> = async ({ heroId }) => {
   const res = await prisma.heroes.findUnique({
@@ -16,7 +17,7 @@ const HeroInfoSection: React.FC<HeroInfoSection> = async ({ heroId }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row">
+      <div className="flex flex-row pl-56 pr-20 grow">
         <HeroBio
           attackType={res.attackType as "Ranged" | "Melee"}
           attributePrimary={res.attributePrimary as "agi" | "all" | "int" | "str"}
@@ -26,7 +27,7 @@ const HeroInfoSection: React.FC<HeroInfoSection> = async ({ heroId }) => {
         />
         <GraphSection heroId={heroId} />
       </div>
-
+      <HeroDetails stats={res} />
     </div>
   )
 }

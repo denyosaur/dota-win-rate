@@ -37,8 +37,19 @@ const WinCountGraph: React.FC<WinRateGraphProps> = ({ data }) => {
   });
 
   const options = {
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
     maintainAspectRatio: false,
+    scales: {
+      x: {
+        ticks: {
+          color: '#eee',
+        },
+      },
+      y: {
+        ticks: {
+          color: '#eee',
+        },
+      },
+    }
   };
 
   useEffect(() => {
@@ -52,6 +63,7 @@ const WinCountGraph: React.FC<WinRateGraphProps> = ({ data }) => {
           data: data.map((data) => data.matches - data.wins),
           borderColor: "#DC4C64",
           borderWidth: 2,
+          pointRadius: 0,
         },
         {
           label: 'Wins',
@@ -61,7 +73,8 @@ const WinCountGraph: React.FC<WinRateGraphProps> = ({ data }) => {
           fill: {
             target: 'origin',
             above: '#3B71CA',
-          }
+          },
+          pointRadius: 0,
         },
       ]
     });

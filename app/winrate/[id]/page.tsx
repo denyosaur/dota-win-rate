@@ -15,7 +15,7 @@ const Winrate: React.FC<WinRate> = async ({ params: { id } }) => {
       <Navbar>
         <HeroSection />
       </Navbar>
-      <main className="flex grow h-screen w-[90vw] max-w-[90rem] pl-56 pr-20">
+      <main className="flex grow h-screen w-[90vw] max-w-[90rem]">
         <GraphPage heroId={heroId} heroName={heroName} />
       </main>
     </div>

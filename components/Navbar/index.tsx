@@ -4,7 +4,7 @@ import React, { ReactNode, useState } from 'react';
 const Navbar = ({ children }: NavbarProps) => {
   const [isActive, setIsActive] = useState<boolean>(true);
   const icon = 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/global/dota2_logo_symbol.png';
-  const navbarBackgroundImage = 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//blog/bg_repeater.jpg';
+  const navbarBackgroundImage = 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/backgrounds/greyfade.jpg';
   const backgroundIcon = {
     backgroundImage: `url(${icon})`,
     backgroundPosition: 'center center',
