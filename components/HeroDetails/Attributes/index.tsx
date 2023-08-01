@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import Attribute from '@/components/HeroInfoSection/HeroDetails/Attributes/Attribute';
+import Attribute from '@/components/HeroDetails/Attributes/Attribute';
 
 const Attributes: React.FC<AttributesProps> = ({
   agilityBase,

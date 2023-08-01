@@ -15,6 +15,10 @@ module.exports = {
       gridTemplateColumns: {
         'repeater': 'repeat(auto-fill, 3.5rem)',
       },
+      boxShadow: {
+        'roleLevelShadow': '0px 0px 10px #427ed1, 0px 0px 10px #427ed1',
+      }
+
     },
   },
   plugins: [],

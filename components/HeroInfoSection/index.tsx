@@ -2,7 +2,7 @@ import { prisma } from '@/db';
 
 import GraphSection from '@/components/GraphSection';
 import HeroBio from '@/components/HeroInfoSection/HeroBio';
-import HeroDetails from '@/components/HeroInfoSection/HeroDetails';
+import HeroDetails from '@/components/HeroDetails';
 
 const HeroInfoSection: React.FC<HeroInfoSection> = async ({ heroId }) => {
   const res = await prisma.heroes.findUnique({
@@ -16,8 +16,8 @@ const HeroInfoSection: React.FC<HeroInfoSection> = async ({ heroId }) => {
   }
 
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-row pl-56 pr-20 grow">
+    <div className="flex flex-col h-full ">
+      <div className="flex flex-row pl-56 pr-20 grow mt-9 mb-[212px]">
         <HeroBio
           attackType={res.attackType as "Ranged" | "Melee"}
           attributePrimary={res.attributePrimary as "agi" | "all" | "int" | "str"}
@@ -37,32 +37,3 @@ export default HeroInfoSection;
 interface HeroInfoSection {
   heroId: string;
 }
-// heroId,
-// shortName,
-// displayName,
-// heroImage,
-// attributePrimary,
-// roles,
-// roleStats,
-// startingDamageMin,
-// startingDamageMax,
-// attackRange,
-// attackRate,
-// startingArmor,
-// startingMagicArmor,
-// moveSpeed,
-// moveTurnRate,
-// visionDaytimeRange,
-// visionNighttimeRange,
-// strengthBase,
-// strengthGain,
-// intelligenceBase,
-// intelligenceGain,
-// agilityBase,
-// agilityGain,
-// complexity,
-// hpRegen,
-// mpRegen,
-// attackType,
-// hype,
-// bio,

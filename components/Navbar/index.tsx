@@ -25,6 +25,7 @@ const Navbar = ({ children }: NavbarProps) => {
     z-[2]
     transition-all ease-in-out delay-350
     shadow-2xl
+    border-r-2 border-solid border-[#282828]
     ` :
     `absolute top-0 left-0
     flex flex-col 
@@ -34,6 +35,7 @@ const Navbar = ({ children }: NavbarProps) => {
     z-[2]
     transition-all ease-in-out delay-350
     shadow-2xl
+    border-r-2 border-solid border-[#282828]
     `;
 
   return (

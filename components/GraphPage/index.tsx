@@ -3,7 +3,7 @@ import HeroInfoSection from '@/components/HeroInfoSection';
 
 const GraphPage: React.FC<GraphPageProps> = ({ heroId }) => {
   return (
-    <div className="flex grow justify-start items-start pt-28">
+    <div className="flex grow justify-start items-start w-full h-full">
       <HeroInfoSection heroId={heroId} />
     </div>
   )
