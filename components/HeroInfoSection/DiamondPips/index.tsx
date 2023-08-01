@@ -1,43 +1,12 @@
-const DiamondPips: React.FC<DiamondPipsProp> = ({ complexity }) => {
+import Pip from './Pip';
 
-  return (
-    <div className="flex flex-row mt-2">
-      <div
-        className={`
-        border border-white 
-        ${complexity === 1 ? 'bg-white' : ''}
-        origin-center 
-        rotate-45 
-        h-3.5 w-3.5
-        mr-4 
-      `}
-      >
-      </div>
-      <div
-        className={`
-          border border-white 
-          ${complexity === 2 ? 'bg-white' : ''}
-          origin-center 
-          rotate-45 
-          h-3.5 w-3.5
-          mr-4
-        `}
-      >
-      </div>
-      <div
-        className={`
-          border border-white 
-          ${complexity === 3 ? 'bg-white' : ''}
-          origin-center 
-          rotate-45 
-          h-3.5 w-3.5
-          mr-4
-        `}
-      >
-      </div>
-    </div>
-  )
-}
+const DiamondPips: React.FC<DiamondPipsProp> = ({ complexity }) => (
+  <div className="flex flex-row mt-2">
+    <Pip fill={complexity >= 1} />
+    <Pip fill={complexity >= 2} />
+    <Pip fill={complexity == 3} />
+  </div>
+);
 
 export default DiamondPips;
 
