@@ -90,7 +90,7 @@ interface HeroDetailsProps {
     heroImage: string;
     attributePrimary: string;
     roles: string[];
-    roleStats: { level: number, roleId: number }[];
+    roleStats: any[];
     startingDamageMin: number;
     startingDamageMax: number;
     attackRange: number;
