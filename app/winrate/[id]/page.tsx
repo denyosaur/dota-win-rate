@@ -9,7 +9,7 @@ const Winrate: React.FC<WinRate> = async ({ params: { id } }) => {
 
   return (
     <div
-      className="flex h-screen flex-row items-center justify-start"
+      className="flex h-screen flex-row items-center justify-center"
       style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', }}
     >
       <Navbar>

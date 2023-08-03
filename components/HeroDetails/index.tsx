@@ -40,42 +40,44 @@ const HeroDetails: React.FC<HeroDetailsProps> = ({
     <div
       className="
         flex flex-row justify-center items-center
-        absolute bottom-0
+        absolute bottom-0 left-0
         min-h-[212px] h-[212px] w-full
         bg-gradient-to-r from-[#252728] to-[#101415]
         border-t-2 border-solid border-[#282828]
         pl-36
       "
     >
-      <Attributes
-        agilityBase={agilityBase}
-        agilityGain={agilityGain}
-        heroImage={heroImage}
-        intelligenceBase={intelligenceBase}
-        intelligenceGain={intelligenceGain}
-        shortName={shortName}
-        strengthBase={strengthBase}
-        strengthGain={strengthGain}
-        hpRegen={hpRegen}
-        mpRegen={mpRegen}
-      />
-      <Divider />
-      <RolesList
-        roleStats={roleStats}
-      />
-      <Divider />
-      <StatsList
-        attackRange={attackRange}
-        attackRate={attackRate}
-        startingDamageMax={startingDamageMax}
-        startingDamageMin={startingDamageMin}
-        startingArmor={startingArmor}
-        startingMagicArmor={startingMagicArmor}
-        moveTurnRate={moveTurnRate}
-        moveSpeed={moveSpeed}
-        visionNighttimeRange={visionNighttimeRange}
-        visionDaytimeRange={visionDaytimeRange}
-      />
+      <div className="flex flex-row justify-center items-center h-full max-width-[1600px]">
+        <Attributes
+          agilityBase={agilityBase}
+          agilityGain={agilityGain}
+          heroImage={heroImage}
+          intelligenceBase={intelligenceBase}
+          intelligenceGain={intelligenceGain}
+          shortName={shortName}
+          strengthBase={strengthBase}
+          strengthGain={strengthGain}
+          hpRegen={hpRegen}
+          mpRegen={mpRegen}
+        />
+        <Divider />
+        <RolesList
+          roleStats={roleStats}
+        />
+        <Divider />
+        <StatsList
+          attackRange={attackRange}
+          attackRate={attackRate}
+          startingDamageMax={startingDamageMax}
+          startingDamageMin={startingDamageMin}
+          startingArmor={startingArmor}
+          startingMagicArmor={startingMagicArmor}
+          moveTurnRate={moveTurnRate}
+          moveSpeed={moveSpeed}
+          visionNighttimeRange={visionNighttimeRange}
+          visionDaytimeRange={visionDaytimeRange}
+        />
+      </div>
     </div>
   )
 }
