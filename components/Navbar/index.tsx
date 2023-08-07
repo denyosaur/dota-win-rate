@@ -73,7 +73,7 @@ const Navbar = ({ children }: NavbarProps) => {
         "
         onClick={() => toggleNavbar()}
       >
-        <button>button</button>
+        <button>Heroes</button>
       </div>
     </nav>
   )

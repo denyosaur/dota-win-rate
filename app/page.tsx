@@ -13,7 +13,7 @@ export default function Home() {
       <Navbar>
         <HeroSection />
       </Navbar>
-      <main className="flex grow h-auto w-full pt-28">
+      <main className="flex grow h-screen w-[90vw] max-w-[90rem]">
         <HomePage />
       </main>
     </div>
